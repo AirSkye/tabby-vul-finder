@@ -23,12 +23,9 @@ jobs:
         run: |
           mvn clean package -DskipTests
           echo "artifactPath=$(pwd)/target" >> $GITHUB_ENV
-          version=$(cat VERSION) 
           tag=${GITHUB_REF_NAME}
-          echo "version=$version" >> $GITHUB_ENV
           echo "tag=$tag" >> $GITHUB_ENV
       # debug
-      - run: echo version is ${{ env.version }}
       - run: echo tag is ${{ env.tag }}
 
       - name: release
@@ -39,7 +36,6 @@ jobs:
           prerelease: false
           release_name: ${{ env.tag }}
           tag_name: ${{ env.tag }}
-          body: ${{ env.version }}
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
