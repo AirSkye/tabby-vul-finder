@@ -24,7 +24,7 @@ public class Loader {
 
     public void load(){
         long start = System.nanoTime();
-        classService.clear(); // clean old data
+        //classService.clear(); // clean old data
         log.info("Try to load data.");
         methodService.importMethodRef();
         classService.importClassRef();
